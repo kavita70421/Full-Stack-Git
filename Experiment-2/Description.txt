@@ -1,177 +1,48 @@
-<<<<<<< HEAD
-In this experiment-3, we have created a DMIN DASHBOARD with light and dark mode theme.
+Diving into the Admin Dashboard's Code
+Let's break down the code for this Admin Dashboard—it's a great example of how HTML and CSS work together 
+to build a professional, dynamic webpage.
 
-ADMIN DASHBOARD DESCRIPTION & STRUCTURE
+The HTML: The Skeleton of the Dashboard
+Think of the HTML as the bones of our dashboard. It sets up the basic structure and content, organizing 
+everything into logical sections.
 
-1.HEADER
-Purpose:Displays the title of the dashboard and provides a toggle for Dark Theme mode.
-HTML Elements Used:
+The Head Section: This part isn't visible on the page, but it's crucial. It tells the browser important things 
+like the page's title (<title>Admin Dashboard</title>) and how to handle different screen sizes 
+(<meta name="viewport" ...>). Most importantly, it links to our CSS file, which is where all the styling magic 
+happens.
 
-<header — Wraps the title and theme toggle.
-<h1 — Displays the text "Admin Dashboard".
-<label and<input type="checkbox" — Creates a labeled toggle for Dark Theme.
-Styling Highlights:
+The Body: This is where all the visible stuff lives. The entire dashboard is wrapped in a main div 
+that uses a CSS Grid to create a clean, three-row, two-column layout.
 
-display: flex; justify-content: space-between; align-items: center; — Ensures the title and theme toggle are horizontally aligned and spaced apart.
-Header background color changes dynamically based on theme mode (light/dark).
+Theme Switcher: This is a clever little trick. The code uses a hidden <input type="checkbox"> that you never 
+actually see. The "DARK THEME" <label> is what you click. When you click it, the checkbox's state changes, and the 
+CSS uses that change to flip the theme.
 
-2. SIDEBAR (Navigation Menu)
-Purpose: Provides quick navigation links to different sections (Home, Users, Settings).
-HTML Elements Used:
+The Sections: The layout is split into clear, semantic sections:
+The <header> at the top holds the title and the theme button.
+The <nav> on the left is our sidebar with navigation links.
+The <main> section in the middle is the star of the show—it's the big space
+for all the important dashboard content.
+The <footer> at the bottom holds the copyright info.
 
-<nav class="sidebar — Contains the vertical menu.
-<ul> + <li> + <a> — Creates a list of navigation links.
-Styling Highlights:
+The CSS: The Style and Personality
+The CSS file is where we give our dashboard its look and feel. It takes the HTML structure and makes it visually 
+appealing and interactive.
 
-Fixed width column in the grid layout (grid-area: sidebar).
-Light or dark background color changes with theme toggle.
-Borders (border: 1px solid black) separate the sidebar visually.
-Links styled with color: var(--link-color); text-decoration: none; for a clean look.
+CSS Variables: This is a modern and powerful technique. The code defines custom properties, or variables, like 
+--bg-header and --bg-footer at the very top. This is genius for theme switching because instead of changing every 
+single color manually, we just update the variable values.
 
-3. MAIN CONTENT
+Grid and Flexbox: The layout relies on two powerful CSS tools:
 
-Purpose: Displays the welcome message and placeholder for charts, tables, or reports.
-HTML Elements Used:
+Grid organizes the main div into rows and columns, creating a solid, predictable structure.
+Flexbox is used inside the header and footer to perfectly align items, like centering text or placing elements 
+on opposite sides.
 
-<main> — The main content container.
-<h3> — Welcome message.
-<p> Instruction text.
-Styling Highlights:
+The Magic of the Theme Switch: This is where the code really shines. The rule input:checked ~ div is the key.
+It says, "Hey, if the hidden checkbox is checked, find the main div container and all its children and apply 
+these new styles." This instantly updates the colors to the dark theme variables and changes the text color to 
+white, all without needing any JavaScript.
 
-grid-area: main— Occupies the main section in the grid layout.
-Padding (padding: 2rem;) ensures text and elements are not cramped.
-Border around content for separation from sidebar.
-
-4. FOOTER
-
-Purpose: Displays copyright.
-HTML Elements Used:
-
-  <footer> — Footer container.
-  <p> — Footer text.
-Styling Highlights:
-
-grid-area: footer — Occupies the full bottom row in grid layout.
-White text on a dark background for strong contrast.
-Centered text (text-align: center;).
-
-CSS STYLING BREAKDOWN
-
-Theme Variables
-
-Uses \:root to define color variables for background, text, header, footer, sidebar, main content, and link colors.
-Dark Theme enabled when #darktheme is checked using:
-
-  
-  body:has(#darktheme:checked) {
-    --bg-color: #1a1a1a;
-    --text-color: #f0f0f0;
-    
-  }
-  
-   This approach avoids rewriting multiple style rules; only variables change.
-
-
-2. Page Layout
-
-Grid Layout:
-
-Two columns: 160px for sidebar, rest for content.
-Three rows: header (auto), main (1fr), footer (auto).
-Layout areas: "header header" "sidebar main" "footer footer".
-
-
-3. Typography & Defaults
-
-Font: sans-serif.
-Color: Controlled by --text-color(changes with theme).
-Margins & paddings reset with:
-
-
-  * {
-    margin: 2;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-
-4. Dark Theme Toggle Styling
-
-Checkbox scaled up (transform: scale(1.2)) for better visibility.
-Accent color matches link color (accent-color: var(--link-color);).
-
-
-LEARNING OUTCOMES
-1.How to create a complete Admin Dashboard layout using HTML and CSS Grid.
-2.How to store and apply CSS variables for theme customization.
-3.How to implement a dark theme toggle using only CSS and a hidden checkbox.
-4.How to structure HTML semantically for better organization.
-=======
-BANKING UI – TEST CASES & VALIDATIONS
-
-1. FIELD: Balance Display  
-   Requirement: Should display initial balance clearly (static text)  
-   Valid Display:  
-       "Balance: $1000"
-
-2. BUTTON: Deposit  
-   Requirement: Should be visible and styled in green  
-   Valid Display:  
-       Shows "Deposit" in a green button
-
-3. BUTTON: Withdraw  
-   Requirement: Should be visible and styled in red  
-   Valid Display:  
-       Shows "Withdraw" in a red button
-
-CSS STYLING BREAKDOWN
-
-1. ELEMENT: body (Page Background)  
-   Purpose: Sets the background and centers the content  
-   Properties:  
-   background-color: #f2f2f2;  
-   text-align: center;  
-   padding-top: 50px;  
-   font-family: Arial, sans-serif;
-
-2. ELEMENT: .bank-box (Main Box)  
-   Purpose: Container that holds balance and buttons  
-   Properties:  
-   background-color: white;  
-   padding: 20px;  
-   width: 250px;  
-   margin: auto;  
-   border: 1px solid #ccc;
-
-3. ELEMENT: .balance (Balance Text)  
-   Purpose: Displays account balance  
-   Properties:  
-   font-size: 18px;  
-   margin-bottom: 20px;
-
-4. ELEMENT: .btn (Common Button Style)  
-   Purpose: Base style for both buttons  
-   Properties:  
-   padding: 10px 15px;  
-   font-size: 16px;  
-   margin: 5px;
-
-5. ELEMENT: .deposit-btn (Deposit Button)  
-   Purpose: Applies green styling to deposit button  
-   Properties:  
-   background-color: green;  
-   color: white;
-
-6. ELEMENT: .withdraw-btn (Withdraw Button)  
-   Purpose: Applies red styling to withdraw button  
-   Properties:  
-   background-color: red;  
-   color: white;
-
-LEARNING OUTCOMES
-
-1. How to create a basic banking interface using HTML and CSS  
-2. Learnt to apply structured styles using CSS classes  
-3. Understood how to organize UI elements using simple layout techniques
-
->>>>>>> 770db354ca2d2f19dff514fe1afaa2601e94c77a
+So, in a nutshell, the HTML provides the clean, logical structure, and the CSS brings it to life with a smart,
+efficient dark theme toggle. It's a great example of building a robust dashboard with a simple, elegant approach.
