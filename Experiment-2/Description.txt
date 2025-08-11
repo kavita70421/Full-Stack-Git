@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 In this experiment-3, we have created a DMIN DASHBOARD with light and dark mode theme.
 
 ADMIN DASHBOARD DESCRIPTION & STRUCTURE
@@ -105,3 +106,72 @@ LEARNING OUTCOMES
 2.How to store and apply CSS variables for theme customization.
 3.How to implement a dark theme toggle using only CSS and a hidden checkbox.
 4.How to structure HTML semantically for better organization.
+=======
+BANKING UI – TEST CASES & VALIDATIONS
+
+1. FIELD: Balance Display  
+   Requirement: Should display initial balance clearly (static text)  
+   Valid Display:  
+       "Balance: $1000"
+
+2. BUTTON: Deposit  
+   Requirement: Should be visible and styled in green  
+   Valid Display:  
+       Shows "Deposit" in a green button
+
+3. BUTTON: Withdraw  
+   Requirement: Should be visible and styled in red  
+   Valid Display:  
+       Shows "Withdraw" in a red button
+
+CSS STYLING BREAKDOWN
+
+1. ELEMENT: body (Page Background)  
+   Purpose: Sets the background and centers the content  
+   Properties:  
+   background-color: #f2f2f2;  
+   text-align: center;  
+   padding-top: 50px;  
+   font-family: Arial, sans-serif;
+
+2. ELEMENT: .bank-box (Main Box)  
+   Purpose: Container that holds balance and buttons  
+   Properties:  
+   background-color: white;  
+   padding: 20px;  
+   width: 250px;  
+   margin: auto;  
+   border: 1px solid #ccc;
+
+3. ELEMENT: .balance (Balance Text)  
+   Purpose: Displays account balance  
+   Properties:  
+   font-size: 18px;  
+   margin-bottom: 20px;
+
+4. ELEMENT: .btn (Common Button Style)  
+   Purpose: Base style for both buttons  
+   Properties:  
+   padding: 10px 15px;  
+   font-size: 16px;  
+   margin: 5px;
+
+5. ELEMENT: .deposit-btn (Deposit Button)  
+   Purpose: Applies green styling to deposit button  
+   Properties:  
+   background-color: green;  
+   color: white;
+
+6. ELEMENT: .withdraw-btn (Withdraw Button)  
+   Purpose: Applies red styling to withdraw button  
+   Properties:  
+   background-color: red;  
+   color: white;
+
+LEARNING OUTCOMES
+
+1. How to create a basic banking interface using HTML and CSS  
+2. Learnt to apply structured styles using CSS classes  
+3. Understood how to organize UI elements using simple layout techniques
+
+>>>>>>> 770db354ca2d2f19dff514fe1afaa2601e94c77a
