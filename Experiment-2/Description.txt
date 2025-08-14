@@ -1,48 +1,115 @@
-Diving into the Admin Dashboard's Code
-Let's break down the code for this Admin Dashboard—it's a great example of how HTML and CSS work together 
-to build a professional, dynamic webpage.
+BANKING UI – TEST CASES & VALIDATIONS
 
-The HTML: The Skeleton of the Dashboard
-Think of the HTML as the bones of our dashboard. It sets up the basic structure and content, organizing 
-everything into logical sections.
+1. FIELD: Balance Display
+   Requirement: Should display the current account balance to the user.
+   Initial Value: $0 by default.
+   Behavior:
+   - Updates dynamically after deposit or withdrawal (once JavaScript is added).
+   - Balance should always be shown with a $ sign.
 
-The Head Section: This part isn't visible on the page, but it's crucial. It tells the browser important things 
-like the page's title (<title>Admin Dashboard</title>) and how to handle different screen sizes 
-(<meta name="viewport" ...>). Most importantly, it links to our CSS file, which is where all the styling magic 
-happens.
+   VALID STATES:
+       "$0" – Initial state
+       "$100", "$2500" – Any positive balance value
 
-The Body: This is where all the visible stuff lives. The entire dashboard is wrapped in a main div 
-that uses a CSS Grid to create a clean, three-row, two-column layout.
+   INVALID STATES:
+       Negative balance (e.g., -$50) – Should not be allowed unless overdraft is implemented
+       Empty or non-numeric display – Should never occur
 
-Theme Switcher: This is a clever little trick. The code uses a hidden <input type="checkbox"> that you never 
-actually see. The "DARK THEME" <label> is what you click. When you click it, the checkbox's state changes, and the 
-CSS uses that change to flip the theme.
+2. FIELD: Deposit Button
+   Requirement: Adds a specified amount to the balance (functionality to be added).
+   Behavior:
+   - On click, prompts for deposit amount.
+   - Accepts only positive numeric values.
+   - Updates balance instantly.
 
-The Sections: The layout is split into clear, semantic sections:
-The <header> at the top holds the title and the theme button.
-The <nav> on the left is our sidebar with navigation links.
-The <main> section in the middle is the star of the show—it's the big space
-for all the important dashboard content.
-The <footer> at the bottom holds the copyright info.
+   VALID INPUTS:
+       100
+       250.75
 
-The CSS: The Style and Personality
-The CSS file is where we give our dashboard its look and feel. It takes the HTML structure and makes it visually 
-appealing and interactive.
+   INVALID INPUTS:
+       Negative numbers (-50) – Not valid for deposit
+       Non-numeric values ("abc", empty input)
 
-CSS Variables: This is a modern and powerful technique. The code defines custom properties, or variables, like 
---bg-header and --bg-footer at the very top. This is genius for theme switching because instead of changing every 
-single color manually, we just update the variable values.
+3. FIELD: Withdraw Button
+   Requirement: Deducts a specified amount from the balance.
+   Behavior:
+   - On click, prompts for withdrawal amount.
+   - Accepts only positive numbers less than or equal to the balance.
+   - If amount is more than balance, shows an error.
 
-Grid and Flexbox: The layout relies on two powerful CSS tools:
+   VALID INPUTS:
+       50 – Withdraws if balance is at least $50
+   INVALID INPUTS:
+       Withdrawal greater than balance (500 when balance is $100)
+       Negative numbers or non-numeric input
 
-Grid organizes the main div into rows and columns, creating a solid, predictable structure.
-Flexbox is used inside the header and footer to perfectly align items, like centering text or placing elements 
-on opposite sides.
+4. FORM SUBMISSION
+   In this case, there’s no form submission — actions are immediate.
+   - Deposit or withdraw with valid amount → Success
+   - Invalid amount → Show error, do not update balance
 
-The Magic of the Theme Switch: This is where the code really shines. The rule input:checked ~ div is the key.
-It says, "Hey, if the hidden checkbox is checked, find the main div container and all its children and apply 
-these new styles." This instantly updates the colors to the dark theme variables and changes the text color to 
-white, all without needing any JavaScript.
+CSS Styling Breakdown: A Structured Overview
 
-So, in a nutshell, the HTML provides the clean, logical structure, and the CSS brings it to life with a smart,
-efficient dark theme toggle. It's a great example of building a robust dashboard with a simple, elegant approach.
+1. ELEMENT: body (Page Layout)
+   Purpose: Centers the banking container in the viewport.
+   Properties & Effects:
+   - font-family: Arial, sans-serif; → Clean, readable font
+   - background-color: #f5f5f5; → Light gray background for soft contrast
+   - display: flex; justify-content: center; align-items: center; height: 100vh; → Centers the `.bank-container` vertically and horizontally
+   - margin: 0; → Removes default browser margin
+
+2. ELEMENT: .bank-container (Main Banking Box)
+   Purpose: Contains balance and action buttons in a card-style layout.
+   Properties & Effects:
+   - background: #fff; → White background for clean appearance
+   - padding: 20px 30px; → Internal spacing for content clarity
+   - border-radius: 10px; → Smooth rounded edges
+   - box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); → Light shadow for depth
+   - text-align: center; → Centers all child elements
+   - width: 300px; → Fixed width for compact UI
+
+3. ELEMENT: .balance (Balance Display)
+   Purpose: Displays the user’s account balance prominently.
+   Properties & Effects:
+   - font-size: 2rem; → Large text for visibility
+   - font-weight: bold; → Emphasizes the amount
+   - color: green; → Signifies positive balance
+   - margin-bottom: 20px; → Separates from buttons
+
+4. ELEMENT: button (Common Button Styling)
+   Purpose: Styles both Deposit and Withdraw buttons.
+   Properties & Effects:
+   - width: 100%; padding: 12px; → Full-width buttons with comfortable click area
+   - font-size: 1rem; font-weight: bold; → Readable and bold labels
+   - border: none; border-radius: 6px; → Clean, rounded design
+   - cursor: pointer; → Pointer cursor for clickable feel
+   - margin-bottom: 10px; → Space between buttons
+   - color: white; → Text stands out against colored backgrounds
+   - transition: transform 0.2s ease; → Smooth hover animation
+
+5. ELEMENT: button:hover
+   Purpose: Provides user feedback on hover.
+   Properties & Effects:
+   - transform: scale(1.05); → Slight zoom effect for interactivity
+
+6. ELEMENT: .deposit
+   Purpose: Gives the deposit button a distinctive green color.
+   Properties & Effects:
+   - background-color: #28a745; → Positive financial action indicator
+
+7. ELEMENT: .withdraw
+   Purpose: Gives the withdraw button a distinctive red color.
+   Properties & Effects:
+   - background-color: #dc3545; → Warning/negative financial action indicator
+
+8. RESPONSIVENESS (Media Query)
+   Purpose: Ensures good appearance on small screens.
+   Properties & Effects:
+   - @media (max-width: 400px) { .bank-container { width: 90%; } } → Makes the banking box adapt to small mobile screens
+
+LEARNING OUTCOMES
+
+1.I learnt how to make a small banking page with HTML and CSS.
+2.I now know how to place things right in the middle of the screen.
+3.I learnt how to make boxes and buttons look neat with css.
+
