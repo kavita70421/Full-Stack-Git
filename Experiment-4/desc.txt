@@ -1,0 +1,1 @@
+I created a live character counter where users can type in a textarea and instantly see the number of characters they’ve entered. I styled it inside a simple container with a heading, and the count updates in real-time as the user types.

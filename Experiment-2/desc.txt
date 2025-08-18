@@ -1,0 +1,1 @@
+I designed a simple balance UI where I displayed the current balance at the top and added two buttons — one for deposit and another for withdraw. I styled it with a clean card layout, soft shadows, rounded corners, and used green for deposit and red for withdraw to make them clear and easy to use.
