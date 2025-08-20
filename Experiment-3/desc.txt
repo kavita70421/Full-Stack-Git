@@ -1,1 +1,4 @@
-I built an admin dashboard with a clean grid layout that includes a header, sidebar, main content area, and footer. I added navigation links on the sidebar for easy access, and the main section shows a welcome message with space for charts or reports. I also included a dark mode toggle that switches the theme between light and dark for better usability.
+I built an admin dashboard with a clean grid layout that includes a header,
+sidebar, main content area, and footer. I added navigation links on the sidebar for easy access, and 
+the main section shows a welcome message with space for charts or reports. I also included a dark mode toggle that
+switches the theme between light and dark for better usability.

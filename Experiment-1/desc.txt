@@ -1,1 +1,3 @@
-I created a simple student registration form where I added fields for name, email, and age. I included basic validations like minimum characters for the name, proper email format, and an age limit between 10 and 100. Finally, I added a "Register" button to submit the form.
+I created a simple student registration form where I added fields for name, email, and age. 
+I included basic validations like minimum characters for the name, proper email format, and an age limit between 10 and 100. 
+Finally, I added a "Register" button to submit the form.
