@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Drawing Tool</title>
+<style>
+  .container {
+    border: 2px solid #333;
+    padding: 10px;
+    width: 600px;
+    margin: 20px auto;
+  }
+  h2 {
+    margin-bottom: 10px;
+  }
+  svg {
+    width: 100%;
+    height: 400px;
+    border: 2px solid #333;
+    background: #f9f9f9;
+    cursor: crosshair;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>SVG Drawing Tool</h2>
+  <svg id="drawingArea"></svg>
+</div>
+
+<script>
+  const svg = document.getElementById("drawingArea");
+  let drawing = false;
+  let path;
+
+  svg.addEventListener("mousedown", e => {
+    drawing = true;
+    const x = e.offsetX, y = e.offsetY;
+    path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("stroke", "blue");
+    path.setAttribute("stroke-width", "2");
+    path.setAttribute("fill", "none");
+    // ✅ fixed line (template literal)
+    path.setAttribute("d", `M${x} ${y}`);
+    svg.appendChild(path);
+  });
+
+  svg.addEventListener("mousemove", e => {
+    if (!drawing) return;
+    const d = path.getAttribute("d") + ` L${e.offsetX} ${e.offsetY}`;
+    path.setAttribute("d", d);
+  });
+
+  svg.addEventListener("mouseup", () => drawing = false);
+  svg.addEventListener("mouseleave", () => drawing = false);
+</script>
+</body>
+</html>

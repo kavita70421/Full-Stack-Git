@@ -1,0 +1,53 @@
+Dynamic Product Filter with Dropdown using JavaScript DOM Manipulation
+I want to walk you through a simple piece of our website code—it's how we filter the product 
+list on our front page. It’s a great example of how our three main tools, HTML, CSS, and JavaScript, 
+work together.
+
+HTML:
+<body>: This is where all the visible content goes.
+<div class="container">: This is a main box that holds everything, giving the page a neat, 
+contained look. The container class is used by CSS to style it.
+<h2>Product List</h2>: A simple heading for the page.
+<label for="category">: This is a text label associated with the dropdown menu, so when a 
+user clicks the text, it focuses on the correct input.
+<select id="category">: This is the dropdown menu. The id="category" is what the JavaScript 
+uses to find this specific element.
+<option value="all">: Each <option> is an item in the dropdown list. The value attribute is 
+important because it's what the JavaScript code reads to know which category the user selected.
+<div id="product-list">: This is a container for all the product items.
+<div class="product" data-category="clothing">T-Shirt</div>: Each of these <div> elements 
+represents a product.
+The class="product" is used for basic styling.
+The data-category attribute is a custom attribute that stores the product's category 
+(clothing, electronics, or books). This is the key piece of information that JavaScript uses to 
+filter the list.
+
+CSS:
+body { ... }: Sets the basic font for the whole page.
+.container { ... }: Styles the main box with a border, padding, a fixed width, and centers 
+it on the page.
+h2 { ... }: Adds a little space below the heading.
+select { ... }: Styles the dropdown menu with padding and a margin.
+.product { ... }: Styles each individual product box, giving it a light border, padding, and
+rounded corners to make it look clean.
+
+JavaScript:
+const categorySelect = document.getElementById("category");: This line finds the dropdown 
+menu using its id and stores it in a variable called categorySelect.
+const products = document.querySelectorAll(".product");: This line finds all the elements with 
+the product class (all the products) and stores them in a list called products.
+categorySelect.addEventListener("change", function () { ... });: This is the core of the 
+interactivity. It "listens" for an event on the dropdown menu. Whenever the user changes the 
+selected option (change), the function inside the curly braces {} runs.
+const selectedCategory = this.value;: Inside the function, this line gets the value of the new 
+selected option (e.g., "clothing," "electronics," or "all").
+products.forEach((product) => { ... });: This loops through every single product in the products 
+list.
+if (selectedCategory === "all" || product.getAttribute("data-category") === selectedCategory): This 
+is the filtering logic. For each product, it checks if:
+The selected category is "all", OR...
+The product's data-category value matches the selected category.
+product.style.display = "block";: If the if condition is true, this line makes the product 
+visible on the page.
+product.style.display = "none";: If the if condition is false, this line hides the product 
+from view.
