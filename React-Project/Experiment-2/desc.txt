@@ -1,0 +1,122 @@
+React Library Management UI with Search, Add, and Remove Functionality
+
+This project demonstrates how to build a basic library management interface using React. It allows users to search, add, and remove books dynamically. This is a practical example of using state management, event handling, and modular component architecture in React to create an interactive web interface.
+
+Components & UI Breakdown
+App.jsx
+
+The root component that manages all state and ties the child components together.
+
+useState is used to manage:
+
+The full list of books (books)
+
+The search term (searchTerm)
+
+const [books, setBooks] = useState([...]);
+const [searchTerm, setSearchTerm] = useState('');
+
+
+Child Components:
+
+<SearchBar />: Handles filtering input
+
+<AddBookForm />: Handles new book input and submission
+
+<BookList />: Displays the filtered list of books
+
+SearchBar.jsx
+Function
+
+A simple input field where users can type to filter the list of books by title or author.
+
+<input
+  type="text"
+  value={searchTerm}
+  onChange={(e) => onSearchChange(e.target.value)}
+/>
+
+
+Controlled Input: The input value is bound to searchTerm, a state managed in App.jsx.
+
+Every keystroke updates the searchTerm state via the onSearchChange callback passed down as a prop.
+
+The filtered book list is calculated in the parent (App.jsx) using .filter().
+
+AddBookForm.jsx
+Function
+
+Allows users to add new books by entering a title and author, then clicking the "Add Book" button.
+
+const [title, setTitle] = useState('');
+const [author, setAuthor] = useState('');
+
+
+Two controlled inputs: One for the book title and one for the author.
+
+The handleSubmit function checks for empty inputs, then calls onAddBook(title, author), which is passed from the parent component.
+
+const handleSubmit = () => {
+  if (title.trim() === '' || author.trim() === '') return;
+  onAddBook(title.trim(), author.trim());
+  setTitle('');
+  setAuthor('');
+};
+
+
+After adding, the input fields are reset.
+
+BookList.jsx
+Function
+
+Renders the list of books. Each book is displayed via the BookItem component.
+
+{books.map((book, index) => (
+  <BookItem
+    key={index}
+    index={index}
+    title={book.title}
+    author={book.author}
+    onRemove={onRemoveBook}
+  />
+))}
+
+
+If no books match the search term, it shows:
+
+<p>No books found.</p>
+
+BookItem.jsx
+Function
+
+Displays a single book entry with its title and author, along with a “Remove” button.
+
+<span><strong>{title}</strong> by {author}</span>
+<button onClick={() => onRemove(index)}>Remove</button>
+
+
+Clicking “Remove” triggers a callback to the parent component (App.jsx) to remove the book from the list by index.
+
+State and Event Handling Flow
+
+Search Input → setSearchTerm() → filters books in real-time.
+
+Add Book → setBooks([...books, newBook]) → adds to the list.
+
+Remove Book → setBooks(books.filter(...)) → removes from the list.
+
+All actions are instant and dynamic, without any page reloads, thanks to React's state-driven re-rendering.
+
+React Concepts Demonstrated
+
+useState for managing form and list state
+
+Controlled form inputs (value + onChange)
+
+Unidirectional data flow (parent → child via props)
+
+Component-based UI design
+
+.map() for rendering lists
+
+.filter() for real-time search functionality
