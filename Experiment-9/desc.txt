@@ -1,0 +1,26 @@
+The HTML and JavaScript code you provided creates a simple class hierarchy in JavaScript, 
+demonstrating the concept of inheritance in object-oriented programming. The code defines a 
+base class, Person, and then two subclasses, Student and Teacher, that inherit from it. This 
+allows the subclasses to reuse and extend the functionality of the parent class.
+
+How It Works
+Imagine you have a general category, like "Person." Every person has a name and an age.
+In the code, this is our main Person class. It has a special instruction (displayInfo()) to 
+introduce itself with its name and age.
+
+Now, let's get more specific. We can have a "Student." A student is a person, but they also have 
+a course. So, instead of starting from scratch, we make the Student class inherit from the Person 
+class. This is like saying, "A Student is a type of Person, with a little extra information." The 
+code uses super() to automatically get the name and age from the Person class and then just adds 
+the course. The Student's displayInfo() method is also smarter; it first asks the parent Person to 
+do its introduction and then adds the course details.
+
+Similarly, we have a "Teacher." A teacher is also a person, but they have a department. 
+The Teacher class also inherits from Person, getting the basic name and age info and then adding 
+the department.
+
+The Final Result
+The code then creates a specific student named Kavita and a specific teacher named Mr. Happy. 
+When it asks each of them to "display their info," they both know what to do. Kavita uses her 
+Student instructions to display her name, age, and course. Mr. Happy uses his Teacher instructions 
+to display his name, age, and department.
