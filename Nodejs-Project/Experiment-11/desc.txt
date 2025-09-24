@@ -1,0 +1,41 @@
+REST API for Playing Card Collection Using Express.js
+
+This Express.js application implements a simple in-memory card management system. It demonstrates key concepts of REST API design,
+routing, and request handling using Express. The API allows clients to view, add, and delete playing cards with a few basic 
+endpoints. Below is a detailed explanation of each part of the system:
+The application simulates a basic backend for managing a collection of playing cards. It provides endpoints to:
+
+Retrieve the list of all cards
+Get details of a specific card by ID
+Add a new card
+Delete an existing card
+The data is stored in-memory (in a JavaScript array), so all changes are temporary and will be lost when the server restarts. 
+This makes the application ideal for learning and prototyping REST APIs without using a database.
+
+Key Data Structure: Cards Array
+The cards array holds card records, each represented as an object with three properties:
+id – A unique identifier for the card.
+suit – The suit of the card (e.g., Hearts, Spades, Diamonds).
+value – The face value of the card (e.g., Ace, King, Queen).
+
+View All Cards
+Returns the complete list of cards, allowing users to see all available entries.
+
+Get a Card by Identifier
+Allows retrieval of a specific card by its unique identifier. If the card exists, it is returned; otherwise, an error 
+indicates that the card was not found. This endpoint illustrates how to handle user input and return appropriate responses.
+
+Add a New Card
+Allows users to create a new card. The system checks that required information is provided, generates a unique identifier, 
+adds the card to the collection, and returns it with a success confirmation. This demonstrates resource creation and proper 
+response handling.
+
+Delete a Card
+Allows removal of a card by its identifier. If the card exists, it is removed and returned to the user. If not, an error is 
+returned. This shows how to handle resource deletion and errors.
+
+Summary:
+This app is a practical example of a small REST API for managing a collection of playing cards. It demonstrates how to list, 
+retrieve, add, and delete resources, handle user input, provide proper success and error responses, and manage temporary data
+in memory. It serves as a strong learning tool for building CRUD APIs and provides a foundation for moving to more robust, 
+database-backed systems.
